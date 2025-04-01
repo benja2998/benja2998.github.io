@@ -1,33 +1,37 @@
 name: Roast My PR
 
-on:
-  pull_request:
+on: 
 
 jobs:
   roast:
+    runs-on: ubuntu-lgithub-token` and `openai-api-key` inputs are passed correctly to theatest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Roast My PR
+        uses: AlexanderOtavka/roast
+        on:
+  pull_request:
+    # Run this action whenever a pull request is created or-my-pr@v1 updated
+    types: [opened, synchronize]
+
+
+    
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          
+ review:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: Roast My PR
-      uses: AlexanderOtavka/roast-my-pr@v1.1.1
-      with:
-        github-token: ${{ secrets.BOT_TOKEN }}
-        openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-        system-prompt: |
-          # optional, default is You are RoastMyPR, a sassy and sometimes mean AI that is reviewing a pull
-          request on GitHub. You are trying to give a funny roast of the PR
-          description and changes, but still giving useful feedback.  Keep the
-          review short. Just focus on the 1-3 most important things. Roast this PR!
-        user-prompt-template: |
-          # optional, default is PR title: {{pr.title}}
-          PR description:
-          {{pr.body}}
+    - uses```
 
-          Code Diff:
-          ```
-          {{pr.diff}}
-          ```
-        max-diff-length: 12000 # optional, default is 12000
-        review-request: optional # optional, default is optional
+Make sure that the `GITHUB_TOKEN`: actions/checkout@v2
+    - name: Roast My PR
+      secret is available in your repository settings. This token is automatically provided in GitHub Actions environments uses: AlexanderOtavka/roast-my-pr@v1.1.1
+      with:
+ and is used to authenticate API requests.
+
+1        github-token: ${{ secrets.GITHUB_TOKEN }}
+        openai-api-key: ${{ secrets.OPENAI_API_KEY }}
