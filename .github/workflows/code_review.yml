@@ -1,0 +1,20 @@
+name: Roast My Code
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+permissions: write-all
+jobs:
+  code_review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Roast My Code
+        uses: christina-de-martinez/roast-my-code@main
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_MODEL: "gpt-4o-mini"
+          exclude: "yarn.lock,dist/**"
